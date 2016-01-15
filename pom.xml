@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>qa-selenium-test-suite</name>
+    <url>http://maven.apache.org</url>
+
+    <groupId>my.com.testproject</groupId>
+    <artifactId>qa-selenium-test-suite</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>common</module>
+        <module>srf</module>
+        <module>chm</module>
+    </modules>
+    <packaging>pom</packaging>
+
+
+    <properties>
+        <allure.version>1.4.17</allure.version>
+        <aspectj.version>1.7.4</aspectj.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <version.maven.compiler.plugin>3.1</version.maven.compiler.plugin>
+        <version.maven.failsafe.plugin>2.12</version.maven.failsafe.plugin>
+        <version.junit>4.11</version.junit>
+        <version.junit.cucumber>1.2.4</version.junit.cucumber>
+        <version.cucumber.picocontainer>1.1.5</version.cucumber.picocontainer>
+        <version.maven.cucumber.reporting>0.0.4</version.maven.cucumber.reporting>
+        <cucumber.features.dir>src/test/resources/features</cucumber.features.dir>
+        <feature>features</feature>
+        <tag1>~@no-tag-specified</tag1>
+        <tag2>~@no-tag-specified</tag2>
+        <browser>firefox</browser>
+        <remote>false</remote>
+        <planName></planName>
+        <cucumber.maven.report>${project.build.directory}/cucumber-html-reports-extended</cucumber.maven.report>
+        <cucumber.json>${project.build.directory}/cucumber.json</cucumber.json>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>my.com.test</groupId>
+                <artifactId>common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>info.cukes</groupId>
+                <artifactId>cucumber-junit</artifactId>
+                <version>${version.junit.cucumber}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${version.junit}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>info.cukes</groupId>
+                <artifactId>cucumber-picocontainer</artifactId>
+                <version>${version.cucumber.picocontainer}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>info.cukes</groupId>
+                <artifactId>gherkin</artifactId>
+                <version>2.12.2</version>
+                <type>jar</type>
+            </dependency>
+
+
+            <dependency>
+                <groupId>ru.yandex.qatools.allure</groupId>
+                <artifactId>allure-java-annotations</artifactId>
+                <version>1.4.4</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.yandex.qatools.allure</groupId>
+                <artifactId>allure-cucumber-jvm-adaptor</artifactId>
+                <version>1.5.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ru.yandex.qatools.allure</groupId>
+                <artifactId>allure-junit-adaptor</artifactId>
+                <version>${allure.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <configuration>
+                            <target>
+                                <zip destfile="${project.basedir}/target/build/${planName}.zip" basedir="${project.basedir}" excludes="target/**" />
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${version.maven.compiler.plugin}</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+
+                        <configuration>
+                            <testFailureIgnore>false</testFailureIgnore>
+
+                            <includes>
+                                <include>**/MainRun.java</include>
+                            </includes>
+
+                            <argLine>
+                                <!---javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar-->
+                            </argLine>
+
+                            <systemPropertyVariables>
+                                <cucumber.options>
+                                    <![CDATA[--tags ${tag1} --tags ${tag2} ${cucumber.features.dir}/${feature}]]>
+                                </cucumber.options>
+                                <browser>${browser}</browser>
+                                <remote>${remote}</remote>
+                                <propertyName>env</propertyName>
+                                <propertyName>BUILD_NUMBER</propertyName>
+                            </systemPropertyVariables>
+
+                            <properties>
+                                <property>
+                                    <name>listener</name>
+                                    <value>ru.yandex.qatools.allure.cucumberjvm.AllureRunListener</value>
+                                </property>
+                            </properties>
+                        </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <!--Needed only to show reports locally. Run jetty:run and
+          open localhost:8080 to show the report-->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.10.v20150310</version>
+                <configuration>
+                    <webAppSourceDirectory>${project.build.directory}/site/allure-maven-plugin</webAppSourceDirectory>
+                    <stopKey>stop</stopKey>
+                    <stopPort>1234</stopPort>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>ru.yandex.qatools.allure</groupId>
+                <artifactId>allure-maven-plugin</artifactId>
+                <version>2.0</version>
+                <configuration>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
+
+
