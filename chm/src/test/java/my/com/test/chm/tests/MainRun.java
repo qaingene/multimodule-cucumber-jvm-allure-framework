@@ -56,7 +56,7 @@ public class MainRun extends BaseStep {
         getSuite().getDriver().quit();
     }
 
-    @Attachment(value = "Page Screenshot", type = "image/png")
+    @Attachment(value = "screenshot", type = "image/png")
     private static byte[] saveScreenshotForAllure(byte[] screenshot){
         return screenshot;
     }
