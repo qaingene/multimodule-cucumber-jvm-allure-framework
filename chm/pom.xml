@@ -42,7 +42,7 @@
         <dependency>
             <groupId>ru.yandex.qatools.allure</groupId>
             <artifactId>allure-java-annotations</artifactId>
-            <version>1.4.4</version>
+            <version>1.4.20</version>
         </dependency>
         <dependency>
             <groupId>ru.yandex.qatools.allure</groupId>
