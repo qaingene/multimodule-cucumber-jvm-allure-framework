@@ -150,7 +150,7 @@
                             <properties>
                                 <property>
                                     <name>listener</name>
-                                    <value>ru.yandex.qatools.allure.cucumberjvm.AllureRunListener</value>
+                                    <value>ru.yandex.qatools.allure.cucumberjvm.AllureRunListener,my.com.test.chm.tests.FailedTestListener</value>
                                 </property>
                             </properties>
                         </configuration>
