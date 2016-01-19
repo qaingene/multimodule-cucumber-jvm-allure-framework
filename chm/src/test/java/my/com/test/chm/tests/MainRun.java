@@ -41,7 +41,6 @@ public class MainRun extends BaseStep {
 
         if(scenario.isFailed()) {
             byte [] screenshot = getSuite().getDriver().makeScreenshot();
-            saveScreenshotForAllure(screenshot);
             scenario.embed(screenshot, "image/png");
         }
 
@@ -56,8 +55,4 @@ public class MainRun extends BaseStep {
         getSuite().getDriver().quit();
     }
 
-    @Attachment(value = "screenshot", type = "image/png")
-    private static byte[] saveScreenshotForAllure(byte[] screenshot){
-        return screenshot;
-    }
 }
