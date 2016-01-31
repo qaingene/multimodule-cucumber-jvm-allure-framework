@@ -22,6 +22,7 @@ public class FailedTestListener extends RunListener {
     public void testFinished(Description description) throws Exception {
     }
 
+    // method invokes saveScreenshotForAllure() method if test hs been failed
     public void testFailure(Failure failure) throws Exception {
         saveScreenshotForAllure();
     }
