@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
  */
 public class DashboardPage extends UserBasePage {
 
-    private By usernameLinkLocator = By.xpath("//*[@class='container']//div[contains(@style, 'color:#fff;font-size')]");
+    private By usernameLinkLocator = By.xpath("//*[@class='col-lg-4 col-md-4 col-sm-4 ng-binding']");
     private By logoutButtonLocator = By.cssSelector(".btn.btn-inverse.btn-mini");
 
 
