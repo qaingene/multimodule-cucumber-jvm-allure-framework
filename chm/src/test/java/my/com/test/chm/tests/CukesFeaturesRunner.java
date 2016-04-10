@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         format = {"pretty", "html:target/cucumber-html-report", "json:target/cucumber.json"},
-//        features = {"chm/src/test/resources/features/node-2-2-1/Login.feature"},
+//        features = {"src/test/resources/features/Login.feature"},
         monochrome = true,
         tags = {"~@skip"})
 /**
