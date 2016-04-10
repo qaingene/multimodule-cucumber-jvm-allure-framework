@@ -130,9 +130,9 @@
                             <includes>
                                 <include>**/MainRun.java</include>
                             </includes>
-                            <argLine>
-                                -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
-                            </argLine>
+                            <!--<argLine>-->
+                                <!-- -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar-->
+                            <!--</argLine>-->
                             <systemPropertyVariables>
                                 <cucumber.options>
                                     <![CDATA[--tags ${tag1} --tags ${tag2} ${cucumber.features.dir}/${feature}]]>
@@ -142,12 +142,12 @@
                                 <propertyName>env</propertyName>
                                 <propertyName>BUILD_NUMBER</propertyName>
                             </systemPropertyVariables>
-                            <properties>
-                                <property>
-                                    <name>listener</name>
-                                    <value>ru.yandex.qatools.allure.cucumberjvm.AllureRunListener,my.com.test.chm.tests.FailedTestListener</value>
-                                </property>
-                            </properties>
+                            <!--<properties>-->
+                                <!--<property>-->
+                                    <!--<name>listener</name>-->
+                                    <!--<value>ru.yandex.qatools.allure.cucumberjvm.AllureRunListener,my.com.test.chm.tests.FailedTestListener</value>-->
+                                <!--</property>-->
+                            <!--</properties>-->
                         </configuration>
                 <dependencies>
                     <dependency>
