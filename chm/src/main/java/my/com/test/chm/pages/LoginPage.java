@@ -2,11 +2,8 @@ package my.com.test.chm.pages;
 
 
 import my.com.test.common.pages.AbstractPage;
-import my.com.test.common.utils.Common;
 import my.com.test.common.webdriver.SeleniumWebDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -15,9 +12,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class LoginPage extends AbstractPage<LoginPage> {
 
-    private By usernameFieldLocator = By.id("loginusername");
-    private By passwordFieldLocator = By.id("loginpassword");
-    private By loginButtonLocator = By.cssSelector(".btn.btn-success");
+    private By usernameFieldLocator = By.id("loginEmail");
+    private By passwordFieldLocator = By.id("loginPassword");
+    private By loginButtonLocator = By.xpath("//button[text()='Login']");
 
     public LoginPage(SeleniumWebDriver webDriver) {
         super(webDriver);
