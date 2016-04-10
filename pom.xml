@@ -113,7 +113,7 @@
                 <!--</executions>-->
             <!--</plugin>-->
 
-
+            <!--mvn -am -pl chm clean verify -Dtag1=~@skip -Dtag2=~@pre-setup -Dfeature=Login.feature -Dbrowser=firefox -Dremote=false-->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${version.maven.compiler.plugin}</version>
@@ -125,18 +125,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.18.1</version>
-
                         <configuration>
                             <testFailureIgnore>false</testFailureIgnore>
-
                             <includes>
                                 <include>**/MainRun.java</include>
                             </includes>
-
                             <argLine>
                                 -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
                             </argLine>
-
                             <systemPropertyVariables>
                                 <cucumber.options>
                                     <![CDATA[--tags ${tag1} --tags ${tag2} ${cucumber.features.dir}/${feature}]]>
@@ -146,7 +142,6 @@
                                 <propertyName>env</propertyName>
                                 <propertyName>BUILD_NUMBER</propertyName>
                             </systemPropertyVariables>
-
                             <properties>
                                 <property>
                                     <name>listener</name>
