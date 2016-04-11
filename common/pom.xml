@@ -27,6 +27,10 @@
             <id>project-repo</id>
             <url>file:${project.basedir}/lib/sqljdbc_4.1</url>
         </repository>
+        <repository>
+            <id>repo.bodar.com</id>
+            <url>http://repo.bodar.com</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -55,11 +59,11 @@
                 <artifactId>sqljdbc4</artifactId>
                 <version>4.0</version>
             </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.3.2</version>
-        </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.3.2</version>
+            </dependency>
     </dependencies>
 
     <build>

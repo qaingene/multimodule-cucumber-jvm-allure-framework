@@ -15,6 +15,12 @@
     </modules>
     <packaging>pom</packaging>
 
+    <repositories>
+        <repository>
+            <id>repo.bodar.com</id>
+            <url>http://repo.bodar.com</url>
+        </repository>
+    </repositories>
 
     <properties>
         <allure.version>1.4.17</allure.version>
@@ -93,6 +99,7 @@
                 <artifactId>totallylazy</artifactId>
                 <version>1.83</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 
