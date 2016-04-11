@@ -32,7 +32,7 @@
         <version.junit>4.11</version.junit>
         <version.junit.cucumber>1.2.4</version.junit.cucumber>
         <version.cucumber.picocontainer>1.1.5</version.cucumber.picocontainer>
-        <version.maven.cucumber.reporting>0.0.3</version.maven.cucumber.reporting>
+        <version.maven.cucumber.reporting>0.0.2</version.maven.cucumber.reporting>
         <cucumber.features.dir>src/test/resources/features</cucumber.features.dir>
         <feature>features</feature>
         <tag1>~@no-tag-specified</tag1>
@@ -46,6 +46,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.googlecode.totallylazy</groupId>
+                <artifactId>totallylazy</artifactId>
+                <version>991</version>
+            </dependency>
+
             <dependency>
                 <groupId>my.com.test</groupId>
                 <artifactId>common</artifactId>
@@ -93,13 +99,6 @@
                 <artifactId>allure-junit-adaptor</artifactId>
                 <version>${allure.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>com.googlecode.totallylazy</groupId>
-                <artifactId>totallylazy</artifactId>
-                <version>1077</version>
-            </dependency>
-
         </dependencies>
     </dependencyManagement>
 
