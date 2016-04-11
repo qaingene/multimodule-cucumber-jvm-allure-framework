@@ -87,6 +87,12 @@
                 <artifactId>allure-junit-adaptor</artifactId>
                 <version>${allure.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.googlecode.totallylazy</groupId>
+                <artifactId>totallylazy</artifactId>
+                <version>1.83</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
