@@ -32,7 +32,7 @@
         <version.junit>4.11</version.junit>
         <version.junit.cucumber>1.2.4</version.junit.cucumber>
         <version.cucumber.picocontainer>1.1.5</version.cucumber.picocontainer>
-        <version.maven.cucumber.reporting>0.0.6</version.maven.cucumber.reporting>
+        <version.maven.cucumber.reporting>0.0.3</version.maven.cucumber.reporting>
         <cucumber.features.dir>src/test/resources/features</cucumber.features.dir>
         <feature>features</feature>
         <tag1>~@no-tag-specified</tag1>
@@ -97,7 +97,7 @@
             <dependency>
                 <groupId>com.googlecode.totallylazy</groupId>
                 <artifactId>totallylazy</artifactId>
-                <version>1.83</version>
+                <version>1077</version>
             </dependency>
 
         </dependencies>
